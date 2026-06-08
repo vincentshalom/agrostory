@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script
+      src="https://kit.fontawesome.com/b84ed87144.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Broccolli | Signup</title>
+  </head>
+  <body>
+    <header
+      class="fixed top-0 z-50 left-0 right-0 w-full shadow-md bg-[#071c1f]"
+    >
+      <nav
+        class="max-w-full lg:max-w-[90%] m-auto flex items-center justify-between gap-2 py-4 px-2 text-[#f4f4f4]"
+      >
+        <h1 class="">
+          <a href="index.html" class="flex items-center gap-[1px]">
+            <img src="images/logo.png" alt="logo" class="inline-block" />
+          </a>
+        </h1>
+
+        <a
+          href=""
+          class="hidden lg:block text-[#071a1d] bg-[#f4f4f4] rounded-full text-xs py-2 px-4"
+          >Login</a
+        >
+      </nav>
+    </header>
+    <main class="">
+      <section
+        class="relative min-h-fit py-40 bg-[url('images/herobgImage-2.webp')] bg-cover bg-center bg-no-repeat"
+      >
+        <div
+          class="max-w-full lg:max-w-[90%] m-auto px-2 flex flex-col lg:flex-row justify-between items-center gap-4 text-[#f4f4f4]"
+        >
+          <div class="absolute inset-0 bg-[#071a1d]/90"></div>
+
+          <div class="relative z-20">
+            <h3 class="uppercase text-[#80b500] text-xs font-bold mb-2">
+              Track Your Order
+            </h3>
+            <h1 class="text-4xl md:text-4xl lg:text-7xl font-bold">Sign Up</h1>
+          </div>
+        </div>
+      </section>
+
+      <section class="min-h-fit py-10 bg-[#071c1f]">
+        <div
+          class="max-w-full lg:max-w-[90%] m-auto px-2 flex flex-col lg:flex-row justify-center items-center gap-4 text-[#f4f4f4]"
+        >
+          <div class="bg-black/50 p-8 rounded-2xl shadow-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6 text-center">Create Account</h2>
+
+            <form class="space-y-4">
+              <!-- Name -->
+              <input
+                type="text"
+                placeholder="Full Name"
+                class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              />
+
+              <!-- Email -->
+              <input
+                type="email"
+                placeholder="Email Address"
+                class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              />
+
+              <!-- Password -->
+              <input
+                type="password"
+                placeholder="Password"
+                class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black"
+              />
+
+              <!-- Button -->
+              <button
+                class="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800 transition"
+              >
+                Sign Up
+              </button>
+
+              <!-- Divider -->
+              <div class="text-center text-sm text-gray-500">or</div>
+
+              <!-- Google -->
+              <button
+                class="w-full border p-3 rounded-lg hover:bg-gray-100 hover:text-[#1a1a1a]"
+              >
+                Continue with Google
+              </button>
+
+              <!-- Login link -->
+              <p class="text-sm text-center">
+                Already have an account?
+                <a href="login.html" class="font-semibold underline">Login</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <!-- prettier-ignore -->
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

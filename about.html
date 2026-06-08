@@ -1,0 +1,847 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <title>Broccoli | About Us</title>
+  </head>
+  <body>
+    <header class="fixed top-0 z-50 w-full shadow-md bg-[#071c1f]">
+      <nav
+        class="max-w-full lg:max-w-[90%] m-auto flex items-center justify-between gap-2 py-4 px-2 text-[#f4f4f4]"
+      >
+        <h1 class="">
+          <a href="index.html" class="flex items-center gap-[1px]">
+            <img src="images/logo.png" loading="lazy" alt="logo" class="inline-block" />
+          </a>
+        </h1>
+        <ul class="hidden lg:flex items-center gap-4 font-semibold">
+          <li><a href="products.html" class="">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <section class="flex items-center gap-6">
+          <form
+            action="search.html"
+            class="hidden h-[40px] lg:flex items-center justify-center border border-[#f4f4f4] text-[#f4f4f4] rounded-full overflow-hidden"
+          >
+
+            <input
+              type="search"
+              name="q"
+              placeholder="Search products..."
+              class="w-full h-full outline-none bg-transparent lg:text-lg text-md px-2 py-1 placeholder:text-sm placeholder:text-[#ccc] flex-1 grow"
+            />
+
+            <button type="submit" class="flex items-center justify-center shrink-0 h-[40px] w-[40px] rounded-full text-[#333] bg-[#f4f4f4]">
+              <ion-icon name="search-outline" class="text-xl"></ion-icon>
+            </button>
+          </form>
+
+          <a href="wishlist.html" class="hidden lg:flex items-center justify-center text-3xl shrink-0">
+            <ion-icon name="heart-outline"></ion-icon>
+          </a>
+         
+          <button id="openCart"
+            class="relative flex items-center justify-center cursor-pointer"
+          >
+            <img src="images/cart.png" alt="" width="40" class="">
+            <small
+              class="totalItemsInCart absolute text-[#1a1a1a] bg-[#f4f4f4] text-sm py-[1px] px-1 rounded-full -top-1 right-0 flex items-center justify-center text-xs"
+              ></small
+            >
+          </button>
+
+          <!-- prettier-ignore -->
+          <a href="signup.html" class="hidden lg:block text-[#071a1d] bg-[#f4f4f4] rounded-full text-xs py-2 px-4">Sign Up</a>
+
+          <button id="openMenu"
+            class="flex items-center justify-center cursor-pointer lg:hidden"
+          >
+            <ion-icon name="menu-outline" class="text-3xl"></ion-icon>
+          </button>
+        </section>
+      </nav>
+    </header>
+    <main class="">
+
+       <!-- CART MENU -->
+    <section id="cart" class="fixed inset-0 z-50 h-screen hidden">
+      <div id="cartOverlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+      <aside id="cartPanel" 
+        class="absolute right-0 top-0 h-full w-full md:w-1/2 bg-[#f9f9f9] shadow-lg flex flex-col transform transition-transform duration-300">
+     
+        <header class="py-4 px-3 flex justify-between items-center border-b border-[#ccc]">
+          <h2 class="text-2xl font-bold">Cart</h2>
+          <button id="closeCart" class="text-3xl">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </header>
+
+        <main class="overflow-y-auto flex-1 px-3 scrollbar-hide">
+          <ul class="cartList flex flex-col gap-3"></ul>
+        </main>
+        <footer class="px-3">
+          <div class="flex items-center justify-between border-t border-b border-[#ccc] py-8">
+            <h3 class="font-bold"> Subtotal:</h3>
+            <h4 class="totalCost font-bold"></h4>
+          </div>
+
+          <div class="uppercase pt-6 pb-10 flex items-center justify-between">
+            <a href="cart.html" class="bg-[#80b500] text-white py-3 px-4 text-xs">view cart</a>
+            <a href="cart.html" class="bg-[#1a1a1a] text-[#f4f4f4] py-3 px-4 text-xs">checkout</a>
+          </div>
+        </footer>
+      </aside>
+    </section>
+       <!-- MOBILE MENU -->
+    <section id="mobileMenu" class="fixed inset-0 bg-[#1a1a1a]/50 z-100 h-screen opacity-0 pointer-events-none transition-opacity duration-300">
+    <aside id="menuPanel" class="w-3/4 bg-white h-screen flex flex-col transform -translate-x-full transition-transform duration-300">
+      <header class="py-4 px-2 flex gap-2 justify-between items-center w-full">
+        <a href="" class="flex items-center">
+          <img src="images/indexLogo.png" alt="logo">
+        </a>
+
+        <button id="closeMenu" class="text-4xl cursor-pointer flex items-center justify-center text-center">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+      </header>
+      <main class=" py-4 px-2 w-full flex flex-col overflow-hidden grow gap-5">
+        <form action="search.html" class="w-full flex border border-[#f4f4f4] focus-within:border-[#80b500] text-[#1a1a1a]">
+          <input type="search" name="q" id="" placeholder="Search..." class="w-full outline-none border-0 py-2 px-2 bg-transparent">
+          <button type="submit" class="flex items-center justify-center shrink-0 border-0 py-2 px-2 cursor-pointer">
+            <ion-icon name="search-outline" class=""></ion-icon>
+          </button>
+        </form>
+      <div class="my-1 flex flex-col overflow-y-scroll grow scrollbar-hide">
+        <ul class="flex flex-col gap-4 pb-6 border-b border-[#ccc]">
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <ul class="flex flex-col gap-4 py-6 border-b border-[#ccc] text-sm">
+          <li>
+            <a href="account.html" class="flex items-center gap-2">
+            <span class="flex items-center border border-[#ccc] p-2">
+            <ion-icon name="person-circle-outline" class="text-[25px]"></ion-icon>
+          </span>
+          <span class="text-sm">
+            My Account
+          </span>
+          </a>
+          </li>
+          <li>
+            <a href="wishlist.html" class="flex items-center gap-2">
+              <span class="relative flex items-center justify-center border border-[#ccc] p-2">
+                <ion-icon name="heart-outline" class="text-[25px]"></ion-icon>
+                <small class="absolute bg-[#1a1a1a] text-[#f4f4f4] text-xs py-[1px] px-[6px] rounded-full -top-1 -right-1 flex items-center justify-center totalItemsInWishlist"></small>
+              </span>
+              <span class="text-sm">
+                Wishlist
+              </span>
+              
+            </a>
+            </li>
+            <li>
+              <a href="cart.html" class="flex items-center gap-2">
+                <span class="relative flex items-center justify-center border border-[#ccc] p-2">
+                  <img src="images/cart.png" alt="cart icon" class="w-[25px]">
+                  <small class="absolute bg-[#1a1a1a] text-[#f4f4f4] text-xs py-[1px] px-[6px] rounded-full -top-1 -right-1 flex items-center justify-center z-20 totalItemsInCart"></small>
+              </span>
+              <span class="text-sm">Shopping Cart</span>
+            </a>
+          </li>
+          
+          
+        </ul>
+        </div>
+      </main>
+      <footer class="py-4 px-2 w-full">
+        <ul class="flex gap-4">
+          <li>
+            <a href="https://facebook.com" class="bg-[#f7f5eb] h-10 w-10 flex items-center justify-center">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </a>
+        </li>
+          <li>
+            <a href="https://x.com" class="bg-[#f7f5eb] h-10 w-10 flex items-center justify-center">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a>
+        </li>
+          <li>
+            <a href="https://linkedin.com" class="bg-[#f7f5eb] h-10 w-10 flex items-center justify-center">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a>
+        </li>
+          <li>
+            <a href="https://instagram.com" class="bg-[#f7f5eb] h-10 w-10 flex items-center justify-center">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a>
+        </li>
+        </ul>
+      </footer>
+    </aside>
+    </section>
+      <!-- HERO  -->
+      <section class="relative min-h-fit pt-40 pb-35 bg-[url('images/herobgImage-2.webp')] bg-cover bg-center bg-no-repeat">
+        <div
+          class="max-w-full lg:max-w-[90%] m-auto px-2 flex flex-col lg:flex-row justify-between items-center gap-4 text-[#f4f4f4]"
+        >
+        <div class="absolute inset-0 bg-[#071a1d]/90"></div>
+          <div class="relative z-20">
+            <h3 class="uppercase text-[#80b500] text-xs font-bold mb-2">
+               Welcome to our company
+            </h3>
+            <h1 class="text-4xl md:text-4xl lg:text-7xl font-bold">
+              About Us
+            </h1>
+          </div>
+          <div class="flex items-center gap-2 relative z-20">
+            <a href="index.html" class="font-semibold">Home</a> |
+            <a href="contact.html" class="font-semibold text-[#80b500]"
+              >About Us</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="min-h-fit py-20 ">
+       <div class="max-w-full lg:max-w-[90%] m-auto px-2 flex w-full flex-wrap">
+        <aside class="lg:w-1/2 w-100%">
+          <div class="">
+            <img src="images/aboutHero-1.png" loading="lazy" alt="photo of farm ceo" >
+          </div>
+        </aside>
+        <aside class="lg:w-1/2 w-100% mt-8">
+           <h3 class="uppercase text-[#80b500] text-xs font-bold mb-2">
+              Know More About Shop
+            </h3>
+            
+            <h2 class="text-2xl md:text-3xl lg:text-5xl font-bold flex flex-col leading mb-8">
+              <span>Trusted Organic</span>
+              <span>Food Store</span>
+            </h2>
+
+            <div class="mb-10">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
+              <p>sed do eiusmod tempor incididunt ut labore</p>
+            </div>
+            <p class="">
+              sellers who aspire to be good, do good, and spread goodness. We democratic, self-sustaining, two-sided marketplace which thrives on trust and is built on community and quality content.
+            </p>
+            <div class="mt-6">
+              <h3 class="font-bold">Mr Olawale Oyeleye</h3>
+              <p>Store Director</p>
+            </div>
+        </aside>
+       </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section class="min-h-fit py-20 bg-[#f7f5eb]">
+        <div class="max-w-full lg:max-w-[90%] m-auto px-2">
+           <h3 class="uppercase text-[#80b500] text-xs font-bold mb-2 text-center">
+              Features
+            </h3>
+            
+            <h2 class="text-2xl md:text-3xl lg:text-5xl font-bold flex flex-col leading mb-12 text-center">
+             Why Choose Us
+            </h2>
+            <ul class="grid grid-cols-[repeat(auto-fit,minmax(240px,_1fr))] gap-6">
+              <li class="shadow-lg py-12 px-6 bg-white">
+                <article class="">
+                  <h1 class="font-bold flex gap-2 items-center mb-4 text-2xl">
+                    <img src="images/chooseus1.png" loading="lazy" alt="">
+                    <a href="#" class="text-[#333] hover:text-[#80b500]">All Kind Brand</a>
+                  </h1>
+                  <p class="leading">
+                    Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.
+                  </p>
+                </article>
+              </li>
+              <li class="shadow-lg py-12 px-6 bg-white">
+                <article class="">
+                  <h1 class="font-bold flex gap-2 items-center mb-4 text-2xl">
+                    <img src="images/chooseus2.png" loading="lazy" alt="">
+                     <a href="#" class="text-[#333] hover:text-[#80b500]">Curated Products</a>
+                  </h1>
+                  <p class="leading">
+                    Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.
+                  </p>
+                </article>
+              </li>
+              <li class="shadow-lg py-12 px-6 bg-white">
+                <article class="">
+                  <h1 class="font-bold flex gap-2 items-center mb-4 text-2xl">
+                    <img src="images/chooseus3.png" loading="lazy" alt="">
+                    <a href="#" class="text-[#333] hover:text-[#80b500]">Pesticide Free Goods</a>
+                  </h1>
+                  <p class="leading">
+                    Lorem ipsum dolor sit ame it, consectetur adipisicing elit, sed do eiusmod te mp or incididunt ut labore.
+                  </p>
+                </article>
+              </li>
+            </ul>
+        </div>
+      </section>
+
+<!-- OUR TEAM MEMBERS -->
+      <section class="min-h-fit py-20">
+        <div class="max-w-full lg:max-w-[90%] m-auto px-2">
+          <h2 class="text-2xl md:text-3xl lg:text-5xl mb-10 text-center">
+            Team Members
+          </h2>
+
+          <ul class="grid grid-cols-[repeat(auto-fit,minmax(240px,_1fr))] gap-6 ">
+            <li class="bg-white shadow-lg py-6 overflow-hidden">
+              <article class="">
+                <div class="">
+                  <img src="images/customer-3.jpg" loading="lazy" alt="founder" class="w-full h-full block">
+                </div>
+                <div class=" flex flex-col items-center justify-center gap-6 ">
+                  <h3 class="text-[#80b500]">Founder</h3>
+                  <h3 class="text-[#80b500]">
+                    <a href="#" class="text-[#333] hover:text-[#80b500]">Rosalina D. William</a>
+                  </h3>
+                  <span class="flex items-center gap-4">
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                  </span>
+                </div>
+              </article>
+            </li>
+            <li class="bg-white shadow-lg py-6 overflow-hidden">
+              <article class="">
+                <div class="">
+                  <img src="images/customer-4.jpg" loading="lazy" alt="founder" class="w-full h-full block">
+                </div>
+                <div class=" flex flex-col items-center justify-center gap-6 ">
+                  <h3 class="text-[#80b500]">Founder</h3>
+                  <h3 class="text-[#80b500]">
+                    <a href="#" class="text-[#333] hover:text-[#80b500]">Rosalina D. William</a>
+                  </h3>
+                  <span class="flex items-center gap-4">
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                  </span>
+                </div>
+              </article>
+            </li>
+            <li class="bg-white shadow-lg py-6 overflow-hidden">
+              <article class="">
+                <div class="">
+                  <img src="images/customer-5.jpg" loading="lazy" alt="founder" class="w-full h-full block">
+                </div>
+                <div class=" flex flex-col items-center justify-center gap-6 ">
+                  <h3 class="text-[#80b500]">Founder</h3>
+                  <h3 class="text-[#80b500]">
+                    <a href="#" class="text-[#333] hover:text-[#80b500]">Rosalina D. William</a>
+                  </h3>
+                  <span class="flex items-center gap-4">
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                  </span>
+                </div>
+              </article>
+            </li>
+            <li class="bg-white shadow-lg py-6 overflow-hidden">
+              <article class="">
+                <div class="">
+                  <img src="images/customer-6.jpg" loading="lazy" alt="founder" class="w-full h-full block">
+                </div>
+                <div class=" flex flex-col items-center justify-center gap-6 ">
+                  <h3 class="text-[#80b500]">Founder</h3>
+                  <h3 class="text-[#80b500]">
+                    <a href="#" class="text-[#333] hover:text-[#80b500]">Rosalina D. William</a>
+                  </h3>
+                  <span class="flex items-center gap-4">
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                    <a href="" class="text-[#333] hover:text-[#80b500]">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                  </span>
+                </div>
+              </article>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+ <!-- TESTIMONIALS -->
+      <section class="min-h-fit py-20 bg-[#f7f5eb]">
+        <div class="max-w-full lg:max-w-[90%] m-auto px-2">
+            <h3 class="uppercase text-bold text-center text-[#80b500] font-bold mb-4">testimonials</h3>
+             <h2
+            class="text-2xl md:text-3xl lg:text-5xl text-center text-[#333] mb-10 font-bold text-[#333]"
+          >
+            Clients' Feedbacks 
+          </h2>
+
+        <div class="relative max-w-container mx-auto">
+
+  <!-- LEFT BUTTON -->
+  <button class="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow w-[50px] h-[50px] rounded-full hover:bg-[#80b500] flex items-center justify-center hover:text-[#f4f4f4]">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+  </button>
+
+ 
+  <ul class="testimonials flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-2 scrollbar-hide "></ul>
+
+  <!-- RIGHT BUTTON -->
+  <button class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow w-[50px] h-[50px] rounded-full flex items-center justify-center hover:bg-[#80b500] hover:text-[#f4f4f4]">
+    <ion-icon name="arrow-forward-outline"></ion-icon>
+  </button>
+
+</div>
+        
+        
+        </div>
+      </section>
+
+      <!-- NEWSLETTER -->
+       <section class="min-h-fit py-20 bg-[#111] text-[#fff]">
+        <div class="max-w-full lg:max-w-[90%] m-auto px-2 text-center">
+          <h2 class="font-semibold mb-6 text-2xl md:text-3xl lg:text-5xl">We make your inbox better</h2>
+          <p class="flex flex-col leading-tight mb-8 text-sm">
+            <span>Sign up to our newsletter to receive grooming tips, style inspiration,
+</span>
+            <span>exclusive access to pre-launch product pricing and more.</span>
+          </p>
+
+          <form action="" class="max-w-[80%] m-auto flex flex-col sm:flex-row items-stretch border border-gray-200/50 overflow-hidden rounded-sm">
+            <input 
+              type="email"
+              placeholder="Enter your email..."
+              class="outline-0 border-0 p-4 w-full text-[#f4f4f4] placeholder:text-[#f4f4f4]"
+            >
+            <button 
+              type="submit" 
+              class="uppercase py-4 px-8 shrink-0 border-0 cursor-pointer bg-[#80b500] text-[#f4f4f4] font-semibold"
+            >
+            Subscribe
+            </button>
+        </form>
+        </div>
+       </section>
+
+          <!-- BLOG POSTS -->
+      <section class="min-h-fit pt-20 pb-40">
+        <div class="max-w-full lg:max-w-[90%] m-auto px-2">
+             <h2
+            class="text-2xl md:text-3xl lg:text-5xl text-center text-[#333] mb-10 font-bold"
+          >
+           Latest Blog 
+          </h2>
+          
+        <ul class="grid grid-cols-[repeat(auto-fit,minmax(240px,_1fr))] gap-10">
+
+  <li class="w-full">
+    <article class="bg-white shadow-md overflow-hidden">
+
+      
+      <div class="overflow-hidden">
+        <img 
+          src="images/post1.jpg" 
+          loading="lazy"
+          alt="Blog post image"
+          class="w-full h-60 object-cover transition duration-300 hover:scale-110"
+        >
+      </div>
+      <div class="p-4 flex flex-col gap-3">
+
+        <p class="flex items-center gap-4 text-sm text-gray-600">
+          <span class="flex items-center gap-1">
+            <ion-icon name="person-circle-outline" class="text-[#80b500]"></ion-icon>
+            Admin
+          </span>
+
+          <span class="flex items-center gap-1">
+            <ion-icon name="pricetag-outline" class="text-[#80b500]"></ion-icon>
+            Services
+          </span>
+        </p>
+
+        <h2 class="text-lg md:text-xl lg:text-2xl font-semibold">
+          Elegance, Service & Repairs
+        </h2>
+
+       
+        <div class="flex items-center justify-between text-sm mt-6">
+          <span class="flex items-center gap-1 text-gray-500">
+            <ion-icon name="calendar-outline" class="text-[#80b500]"></ion-icon>
+            March 20, 2026
+          </span>
+
+          <a href="#" class="uppercase text-[#80b500] font-semibold hover:underline block">
+            Read more
+          </a>
+        </div>
+
+      </div>
+
+    </article>
+  </li>
+  <li class="w-full">
+    <article class="bg-white shadow-md overflow-hidden">
+
+      <!-- IMAGE -->
+      <div class="overflow-hidden">
+        <img 
+          src="images/post2.jpg" 
+          loading="lazy"
+          alt="Blog post image"
+          class="w-full h-60 object-cover transition duration-300 hover:scale-110"
+        >
+      </div>
+
+      <!-- CONTENT -->
+      <div class="p-4 flex flex-col gap-3">
+
+        <p class="flex items-center gap-4 text-sm text-gray-600">
+          <span class="flex items-center gap-1">
+            <ion-icon name="person-circle-outline" class="text-[#80b500]"></ion-icon>
+            Buyer
+          </span>
+
+          <span class="flex items-center gap-1">
+            <ion-icon name="pricetag-outline" class="text-[#80b500]"></ion-icon>
+            Services
+          </span>
+        </p>
+
+        <h2 class="text-lg md:text-xl lg:text-2xl font-semibold">
+          Elegance, Service & Repairs
+        </h2>
+
+        <div class="flex items-center justify-between text-sm mt-6">
+          <span class="flex items-center gap-1 text-gray-500">
+            <ion-icon name="calendar-outline" class="text-[#80b500]"></ion-icon>
+            March 20, 2026
+          </span>
+
+          <a href="#" class="uppercase text-[#80b500] font-semibold hover:underline">
+            Read more
+          </a>
+        </div>
+
+      </div>
+
+    </article>
+  </li>
+  <li class="w-full">
+    <article class="bg-white shadow-md overflow-hidden">
+
+      <!-- IMAGE -->
+      <div class="overflow-hidden">
+        <img 
+          src="images/post3.jpg" 
+          loading="lazy"
+          alt="Blog post image"
+          class="w-full h-60 object-cover transition duration-300 hover:scale-110"
+        >
+      </div>
+
+      <!-- CONTENT -->
+      <div class="p-4 flex flex-col gap-3">
+
+        <p class="flex items-center gap-4 text-sm text-gray-600">
+          <span class="flex items-center gap-1">
+            <ion-icon name="person-circle-outline" class="text-[#80b500]"></ion-icon>
+            Admin
+          </span>
+
+          <span class="flex items-center gap-1">
+            <ion-icon name="pricetag-outline" class="text-[#80b500]"></ion-icon>
+            Services
+          </span>
+        </p>
+
+        <h2 class="text-lg md:text-xl lg:text-2xl font-semibold">
+          Elegance, Service & Repairs
+        </h2>
+
+        <!-- FOOTER -->
+        <div class="flex items-center justify-between text-sm mt-6">
+          <span class="flex items-center gap-1 text-gray-500">
+            <ion-icon name="calendar-outline" class="text-[#80b500] font-bold"></ion-icon>
+            March 20, 2026
+          </span>
+
+          <a href="#" class="uppercase text-[#80b500] font-semibold hover:underline">
+            Read more
+          </a>
+        </div>
+
+      </div>
+
+    </article>
+  </li>
+  
+</ul>
+        </div>
+      </section>
+
+    </main>
+    <footer class="">
+        <section class="relative pt-20 bg-[#f7f5eb]">
+            <div class="max-w-full lg:max-w-[90%] m-auto px-2">
+            <div class="lg:absolute lg:left-1/2 top-0 lg:-translate-x-1/2 lg:-translate-y-1/2 w-full lg:max-w-[90%] px-0 shadow-3xl bg-[#f9fafb]"> 
+
+            <div class="grid grid-cols-[repeat(auto-fit,minmax(250px,_1fr))] gap-10 py-12 px-6 rounded-lg">
+            
+            <article class="flex gap-2">
+                <div class="flex items-center justify-center">
+                <img src="images/curatedIcon1.png" alt="">
+                </div>
+                <div class="flex flex-col gap-2">
+                <h3 class="font-bold text-lg">Curated Products</h3>
+                <p class="text-sm">We provide curated products for all product over $100</p>
+                </div>
+            </article>
+
+            <article class="flex gap-2">
+                <div class="flex items-center justify-center">
+                <img src="images/curatedIcon2.png" alt="">
+                </div>
+                <div class="flex flex-col gap-2">
+                <h3 class="font-bold text-lg">Homemade</h3>
+                <p class="text-sm">We ensure the product quality that is our main goal</p>
+                </div>
+            </article>
+
+            <article class="flex gap-2">
+                <div class="flex items-center justify-center">
+                <img src="images/curatedIcon3.png" alt="">
+                </div>
+                <div class="flex flex-col gap-2">
+                <h3 class="font-bold text-lg">Natural Food Products</h3>
+                <p class="text-sm">We provide curated products for all product over $100</p>
+                </div>
+            </article>
+
+            <article class="flex gap-2">
+                <div class="flex items-center justify-center">
+                <img src="images/curatedIcon4.png" alt="">
+                </div>
+                <div class="flex flex-col gap-2">
+                <h3 class="font-bold text-lg line-clamp-1">Natural Free Home Delivery</h3>
+                <p class="text-sm">We provide curated products for all product over $100</p>
+                </div>
+            </article>
+            </div>
+            </div>
+            <div
+            class="w-full grid grid-cols-[repeat(auto-fit,minmax(200px,_1fr))] gap-6 py-4 mt-8"
+          >
+            <aside class="text-[#1a1a1a] flex flex-col gap-2">
+              <h1 class="">
+                <a href="index.html" class="flex items-center gap-[1px]">
+                 <img src="images/indexLogo.png" loading="lazy" alt="logo" class="inline-block" />
+                </a>
+              </h1>
+              <p class="text-sm ">
+                Your favourite place for delicious bites, and refreshing drinks.
+                Order today band enjoy fast, fresh delivery!
+              </p>
+              <ul class="flex items-center gap-2">
+                <li
+                  class="w-7 h-7 flex items-center justify-center hover:-translate-y-1 transition-transform duration-200"
+                >
+                  <a
+                    href="https://facebook.com"
+                    class="flex items-center justify-center text-gray-600 hover:text-blue-600"
+                  >
+                    <ion-icon name="logo-facebook" class="text-2xl"></ion-icon>
+                  </a>
+                </li>
+                <li
+                  class="w-7 h-7 flex items-center justify-center hover:-translate-y-1 transition-transform duration-200"
+                >
+                  <a
+                    href="https://x.com"
+                    class="flex items-center justify-center text-gray-600 hover:text-blue-600"
+                  >
+                    <ion-icon name="logo-twitter" class="text-2xl"></ion-icon>
+                  </a>
+                </li>
+                <li
+                  class="w-7 h-7 flex items-center justify-center hover:-translate-y-1 transition-transform duration-200"
+                >
+                  <a
+                    href="https://instagram.com"
+                    class="flex items-center justify-center text-gray-600 hover:text-red-500"
+                  >
+                    <ion-icon name="logo-instagram" class="text-2xl"></ion-icon>
+                  </a>
+                </li>
+                <li
+                  class="w-7 h-7 flex items-center justify-center hover:-translate-y-1 transition-transform duration-200"
+                >
+                  <a
+                    href="https://tiktok.com"
+                    class="flex items-center justify-center text-gray-600 hover:text-red-600"
+                  >
+                    <ion-icon name="logo-tiktok" class="text-2xl"></ion-icon>
+                  </a>
+                </li>
+              </ul>
+            </aside>
+            <nav class="flex flex-col justify-start gap-3">
+              <h2 class="text-left text-[#1a1a1a] font-bold text-xl">
+                Navigation
+              </h2>
+              <ul
+                class="flex flex-col gap-3 text-sm text-[#1a1a1a] list-disc list-inside"
+              >
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </nav>
+
+            <nav class="flex flex-col justify-start gap-3">
+              <h2 class="text-left text-[#1a1a1a] font-bold text-xl">
+                Categories
+              </h2>
+              <ul class="flex flex-col gap-3 text-sm">
+                <li><a href="#">Proteins</a></li>
+                <li><a href="#foods">Carbs</a></li>
+                <li><a href="#wines">Vitamins</a></li>
+                <li><a href="#wines">Food</a></li>
+                <li><a href="#wines">Drink</a></li>
+              </ul>
+            </nav>
+
+            <nav class="flex flex-col justify-start gap-3">
+              <h2 class="text-left text-[#1a1a1a] font-bold text-xl">
+                Customer Service
+              </h2>
+              <ul class="flex flex-col gap-3 text-sm">
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Order Tracking</a></li>
+                <li><a href="#">Contact Support</a></li>
+              </ul>
+            </nav>
+
+            <aside class="flex flex-col justify-start gap-3 text-[#1a1a1a]">
+              <h2 class="text-left font-bold text-xl">
+                Newsletter
+              </h2>
+
+              <div class="flex flex-col gap-3 text-sm">
+                <p class="">
+                  Subscribe to our newsletter for the lastest deals and offers
+                </p>
+                <form
+                  action=""
+                  class="flex border-1 border-[#1a1a1a] rounded-sm overflow-hidden"
+                >
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Subscribe for newsletter..."
+                    class="w-full border-0 outline-0 px-2 placeholder:text-xs placeholder:text-[#1a1a1a]"
+                  />
+                  <button
+                    type="submit"
+                    class="bg-[#1a1a1a] text-[#f4f4f4] block shrink-0 py-2 px-2 border-0"
+                  >
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </aside>
+            </div>
+          <div
+            class="w-full grid grid-cols-[repeat(auto-fit,minmax(250px,_1fr))] gap-6 py-4 border-t border-b border-white/40"
+          >
+            <div class="flex flex-col gap-4 text-[#1a1a1a]">
+              <h2 class=" font-bold text-xl">Contact Us</h2>
+              <ul class="flex flex-col gap-2 text-[#1a1a1a]">
+                <li>
+                  <a href="+2348164613530" class="flex items-center gap-2">
+                    <ion-icon name="call-outline" class="text-xl"></ion-icon>
+                    <span class="">+2348164613530</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="mailto:support@foodie.com"
+                    class="flex items-center gap-2"
+                  >
+                    <ion-icon name="mail-outline" class="text-xl"></ion-icon>
+                    <span>support@Broccolli.com</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="flex items-center gap-2">
+                    <ion-icon
+                      name="location-outline"
+                      class="text-xl"
+                    ></ion-icon>
+                    <span class="">123 Broccolli Street, Mississippi, USA</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="flex flex-col gap-4 text-[#1a1a1a]">
+              <h2 class="text-xl text-right font-bold">
+                We Accept
+              </h2>
+              <div class="flex items-center gap-2 showdow-lg h-15 justify-end">
+                <img
+                  src="images/payment-icon.png"
+                  alt="visa card"
+                  class="h-full block flex"
+                />
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-xs text-[#1a1a1a] py-2">
+          &copy;Broccolli. All rights reserved. | Privacy Policy | Terms of Service
+        </p>
+        </div>
+        </section>
+    </footer>
+
+    <!-- prettier-ignore -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <!-- prettier-ignore -->
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+      <script type="module" src="about.js"></script>
+  </body>
+</html>
