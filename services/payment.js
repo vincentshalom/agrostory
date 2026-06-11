@@ -33,7 +33,7 @@ function routeToHomePage() {
   clearLocalStorage("products");
   clearLocalStorage("checkOutData");
   timerId = setTimeout(() => {
-    window.location.href = "/index.html";
+    window.location.href = "index.html";
   }, 3000);
 
   return () => clearInterval(timerId);
