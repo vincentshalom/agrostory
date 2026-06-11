@@ -1,6 +1,7 @@
 import { products } from "../data/products.js";
 
 export const SHIPPING_FEE = 5;
+export const VAT = 1.5;
 
 export function generateHTML(product) {
   const badge =
@@ -213,7 +214,7 @@ export function generateCheckoutCartList(product) {
   return ` 
   <li class="border-t border-slate-100 py-3 flex flex-col lg:flex-row" data-id="">
     <article class="flex flex-col items-center lg:flex-row lg:items-center lg:justify-between gap-3 w-full">
-      <button data-id="${product.id}" class="deleteBtn flex items-center justify-center bg-transparent font-bold text-3xl cursor-pointer">
+      <button data-id="${product.id}" class="deleteBtn flex items-center justify-center bg-transparent font-bold text-2xl hover:bg-red-500 hover:text-white rounded-full cursor-pointer">
         <ion-icon name="close-outline"></ion-icon>
       </button>
     <div class="h-20 w-20">
@@ -222,17 +223,35 @@ export function generateCheckoutCartList(product) {
     <a href="/product.html?id=${product.id}" class="hover:text-[#80b500] text-[#1a1a1a] font-bold inline-block text-sm">${product.name}</a>
     <p class="">${formatCurrency(product.price)}</p>
     <div class="border border-slate-200 flex items-center gap-2 p-1 w-fit">
-      <button data-id="${product.id}" class="decBtn border border-gray-200 p-1 cursor-pointer h-10 w-10 rounded-full flex items-center justify-center">
+      <button data-id="${product.id}" class="decBtn border border-gray-200 p-1 cursor-pointer h-10 w-10 rounded-full flex items-center justify-center hover:bg-[#80b500] hover:text-white">
           <ion-icon name="remove-outline"></ion-icon>
       </button>
       <p class="p-2">${product.quantity}</p>
-      <button data-id="${product.id}" class="incBtn border border-gray-200 p-1 cursor-pointer h-10 w-10 rounded-full flex items-center justify-center">
+      <button data-id="${product.id}" class="incBtn border border-gray-200 p-1 cursor-pointer h-10 w-10 rounded-full flex items-center justify-center hover:bg-[#80b500] hover:text-white">
           <ion-icon name="add-outline"></ion-icon>
       </button>
     </div>
     <h3 class="font-bold text-sm">${formatCurrency(product.total)}</h3>
     </article>
   </li>`;
+}
+
+export function generateCheckOut(product) {
+  return `
+    <div class="flex justify-between items-start border-b pb-4 gap-12">
+      <div>
+        <h4 class="font-medium text-gray-800">
+          ${product.name}
+        </h4>
+        <p class="text-sm text-gray-500">
+          Qty: ${product.quantity} ${product.quantity > 1 ? "Units" : "Unit"}
+        </p>
+      </div>
+
+      <span class="font-semibold text-gray-700">
+        ${formatCurrency(product.total)}
+      </span>
+  </div>`;
 }
 
 //generate high rated products
@@ -381,22 +400,32 @@ export function fromLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key)) || [];
 }
 
+export function clearLocalStorage(key) {
+  return localStorage.clear(key);
+}
+
 // add items to cart
-export function addItemToCart(id) {
-  const product = products.find((p) => p.id === id);
+export function addItemToCart(prodId) {
+  const product = products.find((p) => p.id === prodId);
 
   if (!product) return;
 
   const cartItems = fromLocalStorage("products");
 
-  const itemsExists = cartItems?.some((item) => item.id === product.id);
+  const itemsExists = cartItems?.some((item) => item.id === product.prodId);
   if (itemsExists) return;
 
+  const { id, name, img, price } = product;
+  const quantity = 1;
   cartItems.push({
-    ...product,
-    quantity: 1,
-    total: product.price * 1,
+    id,
+    name,
+    img,
+    price,
+    quantity,
+    total: quantity * price,
   });
+
   toLocalStorage("products", cartItems);
 }
 
@@ -436,6 +465,19 @@ export function incrementProduct(id) {
   });
   toLocalStorage("products", newCart);
 }
+/* export function incrementProduct(id) {
+  const newCart = fromLocalStorage("products").map((product) => {
+    const newQuantity = product.quantity + 1;
+    return product.id === id
+      ? {
+          ...product,
+          quantity: newQuantity,
+          total: product.price * newQuantity,
+        }
+      : product;
+  });
+  toLocalStorage("products", newCart);
+} */
 
 //decrement items
 export function decrementProduct(id) {

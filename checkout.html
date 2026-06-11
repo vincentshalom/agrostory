@@ -215,104 +215,400 @@
                Welcome to our company
             </h3>
             <h1 class="text-4xl md:text-4xl lg:text-7xl font-bold">
-              Cart
+              Checkout
             </h1>
           </div>
           <div class="flex items-center gap-2 relative z-20">
             <a href="index.html" class="font-semibold">Home</a> |
-            <a href="contact.html" class="font-semibold text-[#80b500]"
-              >Cart</a
+            <a href="checkout.html" class="font-semibold text-[#80b500]"
+              >Checkout</a
             >
           </div>
         </div>
       </section>
 
-      <section class="min-h-fit pt-20 pb-40">
-        <div class="relative max-w-full lg:max-w-[90%] m-auto px-2">
-          
-          <button class="backBtn absolute -top-12 left-4 rounded-full w-12 h-12 shadow-md cursor-pointer flex items-center justify-center border border-[#c4c4c4]">
-            <ion-icon name="arrow-back-outline"></ion-icon>
-          </button>
-            <div class="">
-                <ul class="cartItemsList flex flex-col gap-4 relative">
-                  <button class="backBtn absolute -top-12 left-0 rounded-full w-8 h-8 shadow-md cursor-pointer flex items-center justify-center border border-[#c4c4c4]" data-id="${product.id}">
-                    <ion-icon name="arrow-back-outline"></ion-icon>
-                  </button>
-                    <!-- <li class="border-t border-slate-100 py-3 flex flex-col lg:flex-row" data-id="">
-                        <article class="flex flex-col items-center lg:flex-row lg:items-center lg:justify-between gap-3 w-full">
-                            <button class="flex items-center justify-center bg-transparent font-bold text-3xl cursor-pointer">
-                             <ion-icon name="close-outline"></ion-icon>
-                            </button>
-                        <div class="h-24 w-24">
-                            <img src="images/apple.png" loading="lazy" alt="a fresh apple" class="w-full h-full block object-cover" />
-                        </div>
-                        <a href="products.html?id=7" class="hover:text-[#80b500] text-[#1a1a1a] font-bold inline-block text-lg">Apple</a>
-                        <p class="">$149.00</p>
-                        <div class="border border-slate-200 flex items-center gap-2 p-1 w-fit">
-                            <button class="border  border-gray-200 p-1 cursor-pointer h-10 w-10 rounded-full flex items-center justify-center">
-                                <ion-icon name="remove-outline"></ion-icon>
-                            </button>
-                            <p class="p-2">10</p>
-                            <button class="border border-gray-200 p-1 cursor-pointer h-10 w-10 rounded-full flex items-center justify-center">
-                                <ion-icon name="add-outline"></ion-icon>
-                            </button>
-                        </div>
+    <section class="min-h-fit pt-20 pb-40">
+      <div class="relative max-w-full lg:max-w-[90%] m-auto px-2">
+          <section class="bg-white p-6 md:p-8 rounded-lg shadow">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6">
+        Billing Details
+      </h2>
 
-                        <h3 class="font-bold text-lg">$298.00</h3>
-                        </article>
-                    </li> -->
-                </ul>
-                <div class="border-t border-b border-gray-100 py-3 flex lg:flex-row flex-col justify-between gap-6 lg:gap-2 mt-4">
-                    <form action="" class="overflow-hidden ">
-                        <input type="text" name="" id="" class="outline-0 p-2 border border-slate-200 text-sm">
-                        <button class="bg-[#1a1a1a] text-white h-full p-2 cursor-pointer border text-sm">Apply Coupon</button>
-                    </form>
-                    <!-- UPDATE CART -->
-                    <a href="#" class="bg-slate-600 text-[#f4f4f4] w-fit inline-block p-2 text-sm">Update Cart</a>
-                </div>
-            </div>
-           <!-- TOTAL COST OF ITEMS IN CART -->
-            <div class="w-fit w-full max-w-lg mt-20 ml-auto">
-                <h2 class="text-lg font-semibold mb-2">Cart Totals</h2>
-                <ul class="bg-gray-100 text-[#1a1a1a] flex flex-col text-sm p-2 rounded-md">
-                    
-                    <li class="flex items-center justify-between border-b border-gray-200 py-2">
-                    <span>Cart Subtotal</span>
-                    <span class="total">$618.00</span>
-                    </li>
+      <form class="userDetails space-y-6">
+        <!-- First Name & Last Name -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              for="firstName"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              First Name *
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              placeholder="Enter first name"
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
 
-                    <li class="flex items-center justify-between border-b border-gray-200 py-2">
-                    <span>Shipping & Handling</span>
-                    <span class="shippingFee">$15.00</span>
-                    </li>
-
-                    <li class="flex items-center justify-between border-b border-gray-200 py-2">
-                    <span>VAT</span>
-                    <span>$0.00</span>
-                    </li>
-
-                    <li class="flex items-center justify-between border-b border-gray-300 py-2">
-                    <span class="font-bold">Total</span>
-                    <span class="prodAndShippingFee font-bold">$633.00</span>
-                    </li>
-
-                    <li class="pt-2">
-                    <a 
-                        href="#" 
-                        class="bg-[#80b500] hover:bg-[#6ea000] transition text-white font-bold text-center py-3 px-6 inline-block w-full rounded mt-5"
-                    >
-                        Proceed to checkout
-                    </a>
-                    </li>
-
-                </ul>
-            </div>
-        
+          <div>
+            <label
+              for="lastName"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Last Name *
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter last name"
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
         </div>
-       
 
-       
-      </section>
+        <!-- Email & Phone -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="example@email.com"
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              for="phone"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Phone Number *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="+234 801 234 5678"
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Country & State -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              for="country"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Country *
+            </label>
+            <select
+              id="country"
+              name="country"
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              <option value="">Select Country</option>
+              <option value="nigerina">Nigeria</option>
+              <option value="ghana">Ghana</option>
+              <option value="kenya">Kenya</option>
+            </select>
+          </div>
+
+          <div>
+            <label
+              for="state"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              State *
+            </label>
+            <input
+              type="text"
+              id="state"
+              name="state"
+              placeholder="Enter state"
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Town & Zip -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label
+              for="city"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Town / City *
+            </label>
+            <input
+              type="text"
+              id="city"
+              name="city"
+              placeholder="Enter town or city"
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              for="zip"
+              class="block text-sm font-medium text-gray-700 mb-2"
+            >
+              ZIP / Postal Code *
+            </label>
+            <input
+              type="text"
+              id="zip"
+              name="zip"
+              placeholder="Enter ZIP code"
+              class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Home Address -->
+        <div>
+          <label
+            for="address"
+            class="block text-sm font-medium text-gray-700 mb-2"
+          >
+            Home Address *
+          </label>
+
+          <textarea
+            id="address"
+            name="address"
+            rows="4"
+            placeholder="Enter your full delivery address"
+            class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 resize-none"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="flex items-start gap-3">
+          <input
+            type="checkbox"
+            name="terms"
+            id="terms"
+            class="mt-1 h-4 w-4 text-green-600 border-gray-300 rounded"
+            required
+          />
+
+          <label
+            for="terms"
+            class="text-sm text-gray-600"
+          >
+            I agree to the
+            <a href="#" class="text-green-600 hover:underline">
+              Terms & Conditions
+            </a>
+            and
+            <a href="#" class="text-green-600 hover:underline">
+              Privacy Policy
+            </a>
+          </label>
+        </div>
+      </form>
+  </section>
+          
+
+  <section class="min-h-fit pt-20 pb-20  ">
+    <div class="rounded-lg flex flex-col lg:flex-row gap-4 items-start">
+        <!-- Cart Totals -->
+      <div class="bg-white shadow p-6 h-fit w-full lg:w-1/3">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">
+          Cart Totals
+        </h2>
+
+        <!-- Products -->
+        <ul class="checkList space-y-4">
+          <li class="flex justify-between items-start border-b pb-4">
+            <div>
+              <h4 class="font-medium text-gray-800">
+                Fresh Tomatoes
+              </h4>
+              <p class="text-sm text-gray-500">
+                Qty: 5 Units
+              </p>
+            </div>
+            <span class="font-semibold text-gray-700">
+              ₦7,500
+            </span>
+          </li>
+        </ul>
+
+        <!-- Cost Breakdown -->
+        <div class="mt-6 space-y-4">
+
+          <div class="flex justify-between text-gray-600">
+            <span>Subtotal</span>
+            <span class="subtotalEl"></span>
+          </div>
+
+          <div class="flex justify-between text-gray-600">
+            <p>Shipping Cost <span class="shipPercentageEl"></span></p>
+            <span class="shippingCostEl"></span>
+          </div>
+
+          <div class="flex justify-between text-gray-600">
+            <p>VAT <span class="vatPercentageEl"></span></p>
+            <span class="vatEl"></span>
+          </div>
+
+          <hr />
+
+          <div class="flex justify-between text-xl font-bold text-gray-900">
+            <span>Order Total</span>
+            <span class="totalEl"></span>
+          </div>
+
+        </div>
+      </div>
+      <!-- Payment Method Section -->
+      <form class="paymentMethod bg-white shadow p-6 h-fit self-start w-full lg:w-2/3">
+
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">
+          Payment Method
+        </h2>
+
+        <div class="space-y-4">
+
+          <!-- Paystack -->
+          <label
+            class="flex items-start gap-4 p-4 border rounded-lg cursor-pointer hover:border-green-500 transition"
+          >
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="paystack"
+              class="mt-1"
+              checked
+            />
+
+            <div>
+              <h4 class="font-semibold text-gray-800">
+                Paystack
+              </h4>
+
+              <p class="text-sm text-gray-500 mt-1">
+                Pay securely using your debit card, credit card, bank transfer,
+                USSD, or mobile wallet.
+              </p>
+            </div>
+          </label>
+
+          <!-- Flutterwave -->
+          <label
+            class="flex items-start gap-4 p-4 border rounded-lg cursor-pointer hover:border-green-500 transition"
+          >
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="flutterwave"
+              class="mt-1"
+            />
+
+            <div>
+              <h4 class="font-semibold text-gray-800">
+                Flutterwave
+              </h4>
+
+              <p class="text-sm text-gray-500 mt-1">
+                Pay online using cards, bank transfers, mobile money, and other
+                supported payment channels.
+              </p>
+            </div>
+          </label>
+
+          <!-- Bank Transfer -->
+          <label
+            class="flex items-start gap-4 p-4 border rounded-lg cursor-pointer hover:border-green-500 transition"
+          >
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="bankTransfer"
+              class="mt-1"
+            />
+
+            <div>
+              <h4 class="font-semibold text-gray-800">
+                Direct Bank Transfer
+              </h4>
+
+              <p class="text-sm text-gray-500 mt-1">
+                Make payment directly into our bank account. Your order will be
+                processed after payment confirmation.
+              </p>
+            </div>
+          </label>
+
+          <!-- Cash On Delivery -->
+          <label
+            class="flex items-start gap-4 p-4 border rounded-lg cursor-pointer hover:border-green-500 transition"
+          >
+            <input
+              type="radio"
+              name="paymentMethod"
+              value="cashOnDelivery"
+              class="mt-1"
+            />
+
+            <div>
+              <h4 class="font-semibold text-gray-800">
+                Cash on Delivery
+              </h4>
+
+              <p class="text-sm text-gray-500 mt-1">
+                Pay in cash when your agricultural products are delivered to your
+                location.
+              </p>
+            </div>
+          </label>
+
+        </div>
+
+        <!-- Security Notice -->
+        <div
+          class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg"
+        >
+          <p class="text-sm text-green-700">
+            🔒 Your payment information is encrypted and securely processed. We
+            never store your card details.
+          </p>
+        </div>
+
+        <!-- Complete Order Button -->
+        <button
+          type="submit"
+          class="submitBtn w-full mt-6 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition duration-300 cursor-pointer"
+        >
+          Complete Order
+        </button>
+
+      </form>
+    </div>
+    </section>
     </main>
     <footer class="">
         <section class="relative pt-20 bg-[#f7f5eb]">
@@ -544,7 +840,8 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <!-- prettier-ignore -->
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+<script src="https://js.paystack.co/v2/inline.js"></script>
     <script type="module" src="checkout.js"></script>
+
   </body>
 </html>

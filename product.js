@@ -16,6 +16,7 @@ import {
   totalPrice,
   addItemToWishlist,
   formatCurrency,
+  deleteProduct,
 } from "./exports/components.js";
 
 const totalItemsInCart = document.querySelector(".totalItemsInCart");
@@ -51,7 +52,7 @@ function renderCart() {
     (total, item) => total + item.quantity,
     0,
   );
-  totalItemsInWishlist.textContent = wishlist.length
+  totalItemsInWishlist.textContent = wishlist.length;
   totalCost.textContent = formatCurrency(totalPrice());
 }
 
@@ -76,7 +77,6 @@ function mostRatedProds() {
     .slice(0, 3)
     .map(highRated)
     .join("");
-
   mostRated.innerHTML = threeMostRatedProducts;
 }
 
@@ -104,7 +104,6 @@ function activeTab(e) {
 }
 
 function handleCart(e) {
-  console.log(e);
   const button = e.target.closest("button");
 
   if (!button) return;
@@ -112,6 +111,9 @@ function handleCart(e) {
   const id = Number(button.dataset.id);
   if (!id) return;
 
+  if (button.classList.contains("deleteBtn")) {
+    deleteProduct("products", id);
+  }
   if (button.classList.contains("backBtn")) {
     goBack();
   }
@@ -127,6 +129,7 @@ function handleCart(e) {
   if (button.classList.contains("addToCart")) {
     addItemToCart(id);
   }
+
   if (button.classList.contains("wishBtn")) {
     addItemToWishlist(id);
   }
@@ -145,4 +148,7 @@ openCart.addEventListener("click", openCartFunc);
 tabContainer.addEventListener("click", activeTab);
 closeCart.addEventListener("click", closeCartFunc);
 itemContainer.addEventListener("click", handleCart);
-relatedProductsBox.addEventListener("click", addItemToCart);
+relatedProductsBox.addEventListener("click", () => {
+  addItemToCart("products", id);
+  console.log("clicked");
+});

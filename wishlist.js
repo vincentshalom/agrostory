@@ -86,6 +86,7 @@ function wishActions(e) {
   if (button.classList.contains("addToCart")) {
     if (button.disabled) return;
     addItemToCart(id);
+    deleteProduct("wishlist", id);
   }
 
   render();
