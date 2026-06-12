@@ -405,14 +405,14 @@ export function clearLocalStorage(key) {
 }
 
 // add items to cart
-export function addItemToCart(prodId) {
+/* export function addItemToCart(prodId) {
   const product = products.find((p) => p.id === prodId);
 
   if (!product) return;
 
   const cartItems = fromLocalStorage("products");
 
-  const itemsExists = cartItems?.some((item) => item.id === product.prodId);
+  const itemsExists = cartItems?.some((item) => item.id === product.id);
   if (itemsExists) return;
 
   const { id, name, img, price } = product;
@@ -424,6 +424,30 @@ export function addItemToCart(prodId) {
     price,
     quantity,
     total: quantity * price,
+  });
+
+  toLocalStorage("products", cartItems);
+} */
+export function addItemToCart(prodId) {
+  const product = products.find((p) => p.id === prodId);
+
+  if (!product) return;
+
+  const cartItems = fromLocalStorage("products") || [];
+
+  const itemExists = cartItems.some((item) => item.id === product.id);
+
+  if (itemExists) return;
+
+  const { id, name, img, price } = product;
+
+  cartItems.push({
+    id,
+    name,
+    img,
+    price,
+    quantity: 1,
+    total: price,
   });
 
   toLocalStorage("products", cartItems);
