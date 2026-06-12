@@ -14,7 +14,7 @@ export function generateHTML(product) {
      <ion-icon name="heart-outline" class="text-xl cursor-pointer hover:text-red-500"></ion-icon>
     </button>
     
-    <a href="/product.html?id=${product.id}" class="block">
+    <a href="product.html?id=${product.id}" class="block">
         <div class="h-50 w-full overflow-hidden">
           <img 
             src="images/${product.img}" 

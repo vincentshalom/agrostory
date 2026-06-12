@@ -397,17 +397,20 @@
 
   <div class="relative max-w-container mx-auto">
     <!-- LEFT BUTTON -->
-    <button class="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow w-[50px] h-[50px] rounded-full hover:bg-[#80b500] flex items-center justify-center hover:text-[#f4f4f4]">
+   <div class="flex items-center justify-end gap-4 mb-6">
+     <button class="lg:block bg-white shadow w-[30px] h-[30px] rounded-full hover:bg-[#80b500] flex items-center justify-center hover:text-[#f4f4f4] cursor-pointer">
       <ion-icon name="arrow-back-outline"></ion-icon>
     </button>
+      <!-- RIGHT BUTTON -->
+    <button class="lg:block bg-white shadow w-[30px] h-[30px] rounded-full flex items-center justify-center hover:bg-[#80b500] hover:text-[#f4f4f4] cursor-pointer">
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+    </button>
+   </div>
 
     <!-- TESTIMONIAL LIST -->
     <ul class="testimonials flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory px-2 scrollbar-hide "></ul>
 
-    <!-- RIGHT BUTTON -->
-    <button class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow w-[50px] h-[50px] rounded-full flex items-center justify-center hover:bg-[#80b500] hover:text-[#f4f4f4]">
-      <ion-icon name="arrow-forward-outline"></ion-icon>
-    </button>
+  
   </div>
   </div>
 </section>
