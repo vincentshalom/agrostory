@@ -148,7 +148,7 @@ openCart.addEventListener("click", openCartFunc);
 tabContainer.addEventListener("click", activeTab);
 closeCart.addEventListener("click", closeCartFunc);
 itemContainer.addEventListener("click", handleCart);
-relatedProductsBox.addEventListener("click", () => {
-  addItemToCart("products", id);
-  console.log("clicked");
+relatedProductsBox.addEventListener("click", (e) => {
+  handleCart(e);
+  renderCart();
 });
