@@ -433,21 +433,21 @@ export function addItemToCart(prodId) {
 
   if (!product) return;
 
-  const cartItems = fromLocalStorage("products") || [];
+  const cartItems = fromLocalStorage("products");
 
   const itemExists = cartItems.some((item) => item.id === product.id);
 
   if (itemExists) return;
 
   const { id, name, img, price } = product;
-
+  const quantity = 1;
   cartItems.push({
     id,
     name,
     img,
     price,
-    quantity: 1,
-    total: price,
+    quantity,
+    total: quantity * price,
   });
 
   toLocalStorage("products", cartItems);
